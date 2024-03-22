@@ -1,12 +1,21 @@
 import mapboxgl from 'mapbox-gl';
+import { initializeThreeJS } from '../threejs/threejsSetup';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibXljc2FsIiwiYSI6ImNsc2RtM2tvdzEyNnIybXQwcjI5d2tqcjAifQ.SqGe3A-JLNSkTCYluSpRnA';
 
 export function initializeMap() {
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11', // Customize the style
-        center: [-74.0060, 40.7128], // New York City
-        zoom: 15
+        style: 'mapbox://styles/mapbox/outdoors-v12',
+        projection: 'globe',
+        // center: [-118.148451, 34.066285],
+        center: [139.745438, 35.658581],
+        zoom: 16,
+        pitch: 40,
+        bearing: 20,
+        antialias: true
     });
+    map.addControl(new mapboxgl.ScaleControl());
+    initializeThreeJS(map);
 }
+
