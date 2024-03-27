@@ -8,9 +8,9 @@ export function initializeMap() {
         container: 'map',
         style: 'mapbox://styles/mapbox/outdoors-v12',
         projection: 'globe',
-        // center: [-118.148451, 34.066285],
-        center: [139.745438, 35.658581],
-        zoom: 16,
+        center: [-118.148451, 34.066285],
+        // center: [139.745438, 35.658581],
+        zoom: 19,
         pitch: 40,
         bearing: 20,
         antialias: true
