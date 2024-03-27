@@ -14,10 +14,8 @@ function animate(){
     requestAnimationFrame(animate);
 }
 
-let moveCount = 0;
 
 export function initializeThreeJS(map) {
-    // Initialize Threebox
     const tb = new Threebox(
         map,
         map.getCanvas().getContext('webgl'),
@@ -30,32 +28,24 @@ export function initializeThreeJS(map) {
         }
     );
 
-    // Make Threebox instance globally available for debugging and further use
     window.tb = tb;
-    // Adapt the queryBuildingFeatures function to include Threebox extrusion
     queryBuildingFeatures(map, tb);
 }
 
 function calculatePolygonCenter(coordinates) {
-    // Initialize sums and count of points
     let xSum = 0, ySum = 0, pointCount = 0;
 
-    // Assume the first array is the outer boundary if it's a multi-dimensional array
     const points = coordinates[0] ? coordinates[0] : coordinates;
 
-
-    // Sum up all x (longitude) and y (latitude) coordinates
     points.forEach(point => {
         xSum += point[0];
         ySum += point[1];
         pointCount++;
     });
 
-    // Calculate the mean for x and y
     const centerX = xSum / pointCount;
     const centerY = ySum / pointCount;
 
-    // Return the center as an object with longitude and latitude
     return { longitude: centerX, latitude: centerY };
 }
 
